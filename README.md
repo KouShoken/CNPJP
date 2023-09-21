@@ -12,8 +12,6 @@ Docker技術を使い、日本の車のナンバープレートを簡単に読�
 **How to use | 使い方:**
 [CNPJP WIKI](https://github.com/KouShoken/CNPJP/wiki/%E3%83%9B%E3%83%BC%E3%83%A0)
 
----
-
 About ALPRs:
 https://www.eff.org/ja/pages/automated-license-plate-readers-alpr
 
