@@ -26,7 +26,6 @@ most of the content will be written in Japanese.
 統一性のために、このドキュメントは必要が部分を除いて、基本的に日本語で書かれています。
 予めご了承ください。
 
----
 
 # The workflow about CNPJP
 
