@@ -10,7 +10,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+static/bootstarp/dist/
 downloads/
 eggs/
 .eggs/
@@ -146,7 +146,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# pytype static type analyzer
+# pytype spectre type analyzer
 .pytype/
 
 # Cython debug symbols

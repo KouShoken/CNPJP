@@ -1,0 +1,7 @@
+flask
+Flask-Caching
+opencv-python
+opencv-contrib-python
+numpy
+tensorflow
+matplotlib

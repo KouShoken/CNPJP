@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <title>DEMO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/uuidv4.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/monitor.js') }}"></script>
+  <style>
+      img {
+          max-width: 100%;
+      }
+
+      #monitor-container {
+          position: relative;
+      }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">CNPJP Demo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./status">Status</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Demo
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="./demo-webcam">Webcam</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./demo-upload">Another action</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Helps About Demo</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./options">Options</a>
+          </li>
+        </ul>
+        <div class="navbar-text">
+          <div class="spinner-grow spinner-grow-sm text-info d-none" role="status" id="ajax-loadingIcon">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!--demo-monitor-->
+  <div class="demo-monitor-box">
+    <div class="container">
+      <div id="monitor-container" class="monitor-container">
+        <img class="img-fluid" alt="Demo Monitor" id="monitor-img"
+             src="{{ url_for('static', filename='samples/high_cam.jpg') }}">
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="monitor-liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Demo Monitor</strong>
+          <small class="monitor-liveToast_Update" data-time="0"></small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Monitor messages.
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+	let demoImg_path = "{{ url_for('static', filename='samples/driveRecorder_dayStreet.jpg') }}";
+	let monitorImgE = $(`<img class="img-fluid monitor" alt="Demo" src="${demoImg_path}">`);
+	let monitorContainer = $('#monitor-container');
+	let monitorData;
+
+	$(document).ready(function () {
+		clearMarkedBoxes();
+
+		// pre-load image
+		$('#monitor-container').html(monitorImgE);
+
+		// send request to get marks data
+		getBoxesData_path(demoImg_path, function (flag, data) {
+			if (flag) {
+				// draw
+				monitorData = data
+				drawBoxes(monitorData, monitorContainer, monitorImgE);
+			} else {
+				const now = new Date();
+				$("#monitor-liveToast_Update").text("Error" + now.toLocaleTimeString());
+				$("#monitor-liveToast .toast-body").text(data);
+			}
+		});
+	});
+	$(window).resize(function () {
+		clearMarkedBoxes();
+		drawBoxes(monitorData, monitorContainer, monitorImgE);
+	});
+</script>
+</body>
+</html>

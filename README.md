@@ -37,6 +37,15 @@ Then you can use HTTP/HTTPs to request the vehicle information on a picture,
 the response will contain vehicle image, color, license plate picture, license plate OCR information, etc.
 
 
+## How to use
+
+We provide an API interface.
+
+APIでサービスを提供しています。
+
+Document(Postman)：　[https://documenter.getpostman.com/view/27989161/2s9YJXaR2s](https://documenter.getpostman.com/view/27989161/2s9YJXaR2s)
+
+
 ## Supported Number Plates
 **支援するナンバープレート**
 
@@ -52,3 +61,6 @@ it would be good to refer to the AIRIA website.
 ![登録自動車](https://www.airia.or.jp/info/number/e49tph0000000131-img/e49tph000000014t.gif)
 
 （自検協HPにより）
+
+# Open Source Licenses
+* [bootstrap](https://getbootstrap.com/)
