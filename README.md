@@ -9,6 +9,8 @@ A lightweight ALPRs(Automated License Plate Readers) engine to read Japanese car
 速度性、汎用性、そして使いやすさを兼ね備えた自動車牌読取りシステム(ALPRs)。
 Docker技術を使い、日本の車のナンバープレートを簡単に読み取れます。
 
+---
+
 **How to use | 使い方:**
 [CNPJP WIKI](https://github.com/KouShoken/CNPJP/wiki/%E3%83%9B%E3%83%BC%E3%83%A0)
 
@@ -28,7 +30,6 @@ most of the content will be written in Japanese.
 統一性のために、このドキュメントは必要が部分を除いて、基本的に日本語で書かれています。
 予めご了承ください。
 
----
 
 # The workflow about CNPJP
 
