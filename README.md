@@ -69,5 +69,7 @@ it would be good to refer to the AIRIA website.
 
 （自検協HPにより）
 
+[一般社団法人 全国自動車標板協議会](https://www.n-p.or.jp/) 
+
 # Open Source Licenses
 * [bootstrap](https://getbootstrap.com/)
