@@ -15,6 +15,10 @@ Docker技術を使い、日本の車のナンバープレートを簡単に読�
 
 [CNPJP WIKI](https://github.com/KouShoken/CNPJP/wiki/%E3%83%9B%E3%83%BC%E3%83%A0)
 
+
+**Discord:**
+[https://discord.gg/2rKg6ajSaQ](https://discord.gg/2rKg6ajSaQ)
+
 ---
 
 About ALPRs:
