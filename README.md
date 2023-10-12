@@ -1,7 +1,7 @@
 # CNPJP 自動車登録番号標認識システム
 **Car Number Plate JP**
 
-![Shinagawa Plate](cnpjp.jpg)
+![Shinagawa Plate](README.jpg)
 
 Rapidity, Universality And Easily.
 A lightweight ALPRs(Automated License Plate Readers) engine to read Japanese car number plates, with Docker support.
