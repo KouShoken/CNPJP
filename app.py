@@ -1,5 +1,5 @@
 # app.py
-import threading
+import os
 
 from flask import Flask, render_template, redirect, url_for
 from flask_caching import Cache
@@ -9,13 +9,17 @@ from views.cars import cars as views_cars
 
 from recognizer.cars import Vehicle
 
+from pathlib import Path
+
+__BASE_PATH__ = Path(__file__).resolve().parent
+
 app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 
 def load_tf_model(model_path=None):
     # load_model
-    model_path = './saved_models/faster_rcnn_resnet152_v1_640x640_coco17_tpu-8'
+    model_path = os.path.join(__BASE_PATH__, 'saved_models/faster_rcnn_resnet152_v1_640x640_coco17_tpu-8/saved_model')
     app.config['MODEL_Vehicle'] = Vehicle()
     app.config['MODEL_Vehicle'].load_model(model_path)
 

@@ -8,6 +8,7 @@
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
   <script src="{{ url_for('static', filename='js/uuidv4.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/cnpjp.js') }}"></script>
   <script src="{{ url_for('static', filename='js/monitor.js') }}"></script>
   <style>
       img {
@@ -20,7 +21,6 @@
   </style>
 </head>
 <body>
-
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -35,7 +35,8 @@
             <a class="nav-link active" aria-current="page" href="./status">Status</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               Demo
             </a>
             <ul class="dropdown-menu">
@@ -66,44 +67,158 @@
 </header>
 
 <main>
-  <!--demo-monitor-->
-  <div class="demo-monitor-box">
-    <div class="container">
-      <div id="monitor-container" class="monitor-container">
-        <img class="img-fluid" alt="Demo Monitor" id="monitor-img"
-             src="{{ url_for('static', filename='samples/high_cam.jpg') }}">
+  <div class="container-md">
+    <!--demo-monitor-->
+    <div class="row">
+      <div class="demo-monitor-box">
+
+        <div id="monitor-container" class="monitor-container">
+          <img class="img-fluid monitor" alt="Demo Monitor" id="monitor-img" src="">
+        </div>
+
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="monitor-liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <strong class="me-auto">Demo Monitor</strong>
+              <small class="monitor-liveToast_Update" data-time="0"></small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Monitor messages.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <!--panel-->
+  <div class="demo-uploader-box container">
+    <!--loading-bar-->
+    <div class="row">
+      <div class="progress d-none" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+           aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
       </div>
     </div>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="monitor-liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <strong class="me-auto">Demo Monitor</strong>
-          <small class="monitor-liveToast_Update" data-time="0"></small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="row">
+      <!--uploader-->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="scrollspy-example bg-body-tertiary p-3 rounded-2">
+          <form action="/view/status" method="GET" class="mb-3">
+            <div class="row">
+              <div class="col-10">
+                <label for="fileFromUrl_input" class="form-label">
+                  From URL:
+                </label>
+                <input class="form-control" type="url" name="fileFromURL" id="fileFromUrl_input">
+              </div>
+              <div class="col-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-outline-primary w-100">Submit</button>
+              </div>
+            </div>
+          </form>
+          <form action="/view/status" method="POST">
+            <div class="row">
+              <div class="col-10">
+                <label for="fileToUpload_input" class="form-label">
+                  Upload (On dev):
+                </label>
+                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload_input" disabled>
+              </div>
+              <div class="col-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-outline-primary w-100" disabled>Upload</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="toast-body">
-          Monitor messages.
-        </div>
+      </div>
+      <!--cars-list-->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <table class="car-list table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Number</th>
+            <th scope="col">Type</th>
+            <th scope="col">Info</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>[写真]</td>
+            <td>多摩303 み 67-67</td>
+            <td>普通</td>
+            <td>ホンダ　灰色</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>[写真]</td>
+            <td>？？-- □ 84-16</td>
+            <td>普通</td>
+            <td>スバル　青色</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>[写真]</td>
+            <td>？？--- □ ??-?2</td>
+            <td>普通</td>
+            <td>未知　白色</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>[写真]</td>
+            <td>？？--- □ ??-??</td>
+            <td>バス</td>
+            <td>未知　白色</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>[写真]</td>
+            <td>？？--- □ ??-??</td>
+            <td>トラック</td>
+            <td>未知　白色</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </main>
 
 <script>
-	let demoImg_path = "{{ url_for('static', filename='samples/driveRecorder_dayStreet.jpg') }}";
-	let monitorImgE = $(`<img class="img-fluid monitor" alt="Demo" src="${demoImg_path}">`);
+	let monitorImgE = $('#monitor-container img');
+	let demoImg_path;
 	let monitorContainer = $('#monitor-container');
 	let monitorData;
+	const urlParams = new URLSearchParams(window.location.search);
+
+	// Set default demo-img url
+	const host = `${window.location.protocol}//${window.location.host}`;
+	demoImg_path = urlParams.get('fileFromURL');
+	if (!demoImg_path) {
+		demoImg_path = host + "{{ url_for('static', filename='samples/driveRecorder_dayStreet.jpg') }}"
+	}
+
+	// fill fileInputBox
+	$("#fileFromUrl_input").val(demoImg_path);
+
 
 	$(document).ready(function () {
 		clearMarkedBoxes();
 
 		// pre-load image
+		monitorImgE.attr('src', demoImg_path)
 		$('#monitor-container').html(monitorImgE);
 
 		// send request to get marks data
-		getBoxesData_path(demoImg_path, function (flag, data) {
+		getBoxesData_urlPath(demoImg_path, function (flag, data) {
 			if (flag) {
 				// draw
 				monitorData = data

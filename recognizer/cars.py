@@ -10,6 +10,10 @@ from matplotlib import patches
 
 from recognizer import *
 
+from pathlib import Path
+
+__BASE_PATH__ = Path(__file__).resolve().parent
+
 
 class Vehicle:
     def __init__(self):
@@ -75,7 +79,6 @@ class Vehicle:
         :return:
         """
 
-        model_path = os.path.join(model_path, "saved_model")
         self.model = tf.saved_model.load(model_path)
         # print("loading model")
 
@@ -327,8 +330,9 @@ class VehicleNumberPlate:
 
 
 def __test__():
-    img_path = "../static/samples/high_cam.jpg"
-    model = '../saved_models/faster_rcnn_resnet152_v1_640x640_coco17_tpu-8'
+    img_path = os.path.join(__BASE_PATH__, "../static/samples/high_cam.jpg")
+    model = os.path.join(__BASE_PATH__, '../saved_models/faster_rcnn_resnet152_v1_640x640_coco17_tpu-8')
+    model = os.path.join(model, "saved_model")
 
     m = Vehicle()
     m.load_model(model)
